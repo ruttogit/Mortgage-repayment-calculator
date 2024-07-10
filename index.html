@@ -13,14 +13,18 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
+
+/* import font */
 @font-face {
   font-family: 'Plus Jakarta Sans';
   src: url(assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf);
   src: url(assets/fonts/PlusJakartaSans-VariableFont_wght.ttf);
 }    
     :root{
+      --lime: hsl(61, 70%, 52%);
+      --red: hsl(4, 69%, 50%);
       --white: hsl(0, 0%, 100%);
-      --slate-100: hsl(202, 86%, 94%);
+      --Slate-100: hsl(202, 86%, 94%);
       --Slate-300: hsl(203, 41%, 72%);
       --Slate-500: hsl(200, 26%, 54%);
       --Slate-700: hsl(200, 24%, 40%);
@@ -33,153 +37,552 @@
       font-family: 'Plus Jakarta Sans';
     }
  
-    .mortgage-caculator{
-      height: 100vh;
+    .container{
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .container{
-      padding: 40px 50px;
+      height: 100vh;
       background: var(--slate-100);
-      height: 500px;
-      width: 900px;
-      display: flex;
-      align-items: center;
-      justify-content:flex-start;
     }
     .card{
-      display: flex;
-      justify-content: center;
-      padding: 2rem 3rem;
-      height: 400px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 500px;
       background: var(--white);
+      position: relative;
+      padding: 30px;
     }
     .left{
-      padding: 0px 40px;
+      position: relative;
     }
     .left h3{
-      font-family: 'Plus Jakarta Sans';
-      display: inline-block;
+      font-size: 16px;
     }
-    .left .fa-sterling-sign, .mortgage-num{
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .left label{
+      font-size: 13px;
+      color: var(--Slate-900);
+    }
+    .clear{
       position: absolute;
-      padding: 4.5px;
-      height: 14.5px;
-      width: 30px;
-      margin: 1px;
-      background: var(--Slate-300);
+      right: 10px;
+      font-size: 14px;
+      font-weight: 100;
+      color: var(--Slate-500);
+      font-size: 12px;   
     }
-    .left .mortgage-percentage{
-      display: flex;
-      /* align-items: center; */
-      justify-content: left;
-    
+    .left h3{
+      display: inline-block;
+      margin: 0;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: var(--Slate-900);
+    }
 
+    #static-icon-1{
+      background: var(--Slate-100);
+      color: var(--Slate-900);
     }
 
     .left input{
-      width: 100%;
-      height: 20px;
-      /* position: relative; */
+      position: relative;
+      z-index: 0;
+      height: 25px;
+      width: 93%;
+      border: 1px solid var(--Slate-700);
+      border-radius: 4px;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans';
+      color: var(--Slate-900);
+    }
+    #mortgage-amount-validation {
+      font-size: 9px;
+      margin: 0;
+      padding: 0;
+      margin-top: -12px;
+      display: none;
+      color: var(--red);
+    }
+    .cont label{
+      font-size: 13px;
+      color: var(--Slate-700);
+    }
+    .mortgage-amount{
+      margin-bottom: 15px;
+      padding-left: 45px;
+      box-sizing: border-box;
     }
 
+
+    .left i{
+      position: absolute;
+      z-index: 1;
+      padding: 4px 15px ;
+      text-align: center;
+      margin-top: 1px;
+      margin-left: 1px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .cont{
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .mortgage-term{
+      position: relative;
+      
+    }
+    .mortgage-term label{
+      box-sizing: border-box;
+    }
+    #morgage-term-validation{
+      font-size: 9px;
+      margin: 0;
+      padding: 0;
+      margin-top: 3px;
+      display: none;
+      color: var(--red);
+
+    }
+
+    .intrest-rate{
+      position: relative;
+      width: 80%;
+      
+      
+    }
+    #interest-rate{
+      padding-left: 10px;
+    }
+    #interest-rate-validation{
+      font-size: 9px;
+      margin: 0;
+      padding: 0;
+      margin-top: 3px;
+      display: none;
+      color: var(--red);
+    }
+    #mortage-term{
+      padding-left: 10px;
+    }
+    .mortgage-years{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mortgage-years span{
+      position: absolute;
+      top: -20px;
+      right: -4px;
+      margin-top: -7.6px;
+      padding:3px;
+      font-size: 16px;
+      font-weight: 500;
+      
+    }
+    #static-icon-2{
+      background: var(--Slate-100);
+      color: var(--Slate-700);
+    }
+    .mortgage-percentage{
+      position: absolute;
+      text-align: center;
+      right: -6px;
+      top: 23px;
+      padding: 3px 15px;
+      margin-top: -1px;
+      z-index: 0;
+      font-weight: 500;
+    }
+    #static-icon-3{
+      background: var(--Slate-100);
+      color: var(--Slate-700);
+    }
+    .mortgage-type-label{
+      padding-bottom: 10px;
+      font-size: 15px
+    }
+    input[type="radio"]{
+      display: inline-block;
+      width: 15px;
+      margin-right: 15px;
+      accent-color: var(--lime);
+    }
+    .type-intrest{
+      margin-top: 1px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+    .type-intrest .repayement{
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-weight: 700;   
+    }
+    .repayement, .interest-only{
+      width: 90%;
+      padding: 5px 5px;
+      border: 1px solid var(--Slate-500);
+      font-weight: 700;
+    }
+    .repayement:hover{
+      border: 1px solid var(--lime);
+      cursor: pointer;
+    }
+    .interest-only:hover{
+      border: 1px solid var(--lime);
+      cursor: pointer;
+    }
+    .interest-only{
+      display: flex;
+      align-items: center;
+    }
+    #mortage-type-validation{
+      font-size: 9px;
+      margin: 0;
+      padding: 0;
+      margin-top: 5px;
+      display: none;
+      color: var(--red);
+    }
+    .left button{
+      width: 95%;
+      padding: 10px 20px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      position: relative;
+      border-radius: 20px;
+      border: none;
+      color: var(--Slate-900);
+      background: var(--lime);
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .left button i{
+      margin: 0;
+      padding: 10px;
+      position: static;
+      background: none;
+      font-size: 18px; 
+    }
+    .left button:hover{
+      opacity: 0.9;
+    }
+    .right{
+      background: var(--Slate-900);
+      padding-left: 30px;
+      color: var(--white);
+      padding: 10px 30px 20px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 50px;
+    }
+    .active{
+      display: none;
+    }
+    .right h3{
+      margin-top: 10px;
+      margin: 0;
+      font-size: 17px;
+    }
+    .right p{
+      color: var(--Slate-100);
+      font-weight: 100;
+      font-size: 13px;
+    }
+    .monthly-repayement-results{
+      background: var(--Slate-900);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .dividor{
+      height: 4px;
+      width: 100%;
+      background: var(--lime);
+      z-index: 0;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+    .results{
+      padding: 5px 10px;
+    }
+    .monthly-repayement-results .total{
+      font-size: 35px;
+      margin: 0;
+      font-weight: 400;
+      color: var(--lime);
+      margin: 0px;
+      font-weight: 700;
+    }
+    .dividor-2{
+      width: 100%;
+      background: var(--Slate-100);
+      height: 0.11px;
+      z-index: 2;
+      margin-top: 20px;
+    }
+    .preview{
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview img{
+      width: 100px;
+    }
+    .preview p{
+      font-size: 12px;
+    }
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
+
+   @media (max-width: 400px){
+      .card{
+        grid-template-columns: 1fr;
+        margin-top: 90px;
+      }
+      .right{
+        margin-top: 50px;
+      }
+    }
+
   </style>
 </head>
 <body>
-
 
   <div class="mortgage-caculator">
     <div class="container">
       <div class="card">
         <div class="left">
-          <h3>Mortgage Calculator</h3><span class="clear">Clear All</span><br>
+          <h3>Mortgage Calculator</h3><a onclick="clear();" href=""><span class="clear">Clear All</span></a><br>
           <label for="amount">Mortgage Amount</label><br>
-          <i class="fa-solid fa-sterling-sign"></i>
-          <input type="text" class="euro-icon" value><br>
-          <label for="amount">Mortgage Term</label><br>
-          <span class="mortgage-num">25</span>
-          <input type="text" value>
-          <span>Years</span>
-          <input type="text">
-          <span class="mortgage-percentage">%</span> <br>
-    
-          <label for="mortage-type">Mortgage Type</label><br>
-          <input type="radio">
-          <label for="">Interest Rate</label>
-          <input type="radio">
-          <label for="">Repayment</label><br>
-          <button><i class="fa-solid fa-calculator"></i>Calculate Repayments</button>
+          <i class="fa-solid fa-sterling-sign" id="static-icon-1"></i>
+          <input type="number" id="mortgage-amount" class="mortgage-amount" value  onfocus="this.value=''" required = true><br>
+          <p id="mortgage-amount-validation">This field is required</p>
+
+          <div class="cont">
+              <div class="mortgage-term">
+                <label for="amount">Mortgage Term</label><br>
+                <div class="intrest-rate-input">
+                  <input type="number" id="mortage-term" value  onfocus="this.value=''">
+                </div>
+                <div class="mortgage-years">
+                  <span class="static-icon" id="static-icon-2">years</span>
+                </div>
+                <p id="morgage-term-validation">This field is required</p>
+              </div>
+              <div class="intrest-rate">
+                <label for="intrest-rate">Interest Rate</label><br>
+                <div class="input-percentage">
+                  <input type="number" type="text" id="interest-rate"  onfocus="this.value=''">
+                  <p id="interest-rate-validation">This field is required</p>
+                </div>
+                <div class="mortgage-percentage" id="static-icon-3">%</div>
+              </div>
+          </div><br>
+          
+          <label class="mortgage-type-label" for="mortage-type">Mortgage Type</label>
+          <div class="type-intrest">
+            <div class="repayement">
+              <input type="radio" name="mortageType" id="repayement-type">
+              <label for="">Repayment</label>
+              <br>
+            </div>
+            <div class="interest-only">
+              <input type="radio" name="mortageType" id="interest-type">
+              <label for="">Interest Only</label>
+            </div>
+            <p id="mortage-type-validation">This field is required</p>
+          </div>
+          <button onclick="updateResults();"><img src="assets/images/icon-calculator.svg" alt="">Calculate Repayments</button>
         </div>
       
-        <div class="right">
+        <div class="right active">
           <h3>Your results</h3>
           <p>Your results are shown below based on the information<br> you provided. 
             To adjust the results, edit the form and<br> click “calculate repayments” again.
           </p>
-    
           <div class="monthly-repayement-results">
-            <p> Your monthly repayments</p>
-            <div class="total">6768</div>
-            <p>Total you'll repay over the term</p>
+            <div class="dividor"></div>
+            <div class="results">
+              <p> Your monthly repayments</p>
+              <div class="total">
+                <i class="fa-solid fa-sterling-sign"></i><span id="total-monthly">1,797.74</span>
+              </div>
+              <div class="dividor-2"></div>
+              <div class="total-repay">
+                <p>Total you'll repay over the term</p>
+                <h3><i class="fa-solid fa-sterling-sign"></i><span id="total">539,322.94</span></h3>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="right preview" >
+          <img src="assets/images/illustration-empty.svg" alt="">
+          <h3>Results shown here</h3>
+          <p>Complete the form and click "calculate repayements" to <br> see what your monthly repayements would be. </p>
         </div>
       </div>
     </div>
-    
   </div>
-    
-
-
-
-
-
-
-
-  
-  
-
-
-  
-
- 
-
-  
-
- 
-  
-  Interest Only
-
-  Calculate Repayments
-
-  <!-- Empty results start -->
-
-  Results shown here
-
-  Complete the form and click “calculate repayments” to see what 
-  your monthly repayments would be.
-
-  <!-- Empty results end -->
-
-  <!-- Completed results start -->
-
-  
-
-  
- 
-
-  
 
   <!-- Completed results end -->
-  
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+  <script>
+
+  
+
+    const mortgageAmountInput = document.getElementById('mortgage-amount');
+    const interestRate = document.getElementById('interest-rate');
+    const mortageTerm = document.getElementById('mortage-term');
+
+    // initialized morygage value to empty string
+    let mortgageAmountValue = '';
+    mortgageAmountInput.addEventListener('input', () => {
+      mortgageAmountValue = mortgageAmountInput.value;
+    })
+
+    let mortageTermValue = '';
+    mortageTerm.addEventListener('input', () => {
+      mortageTermValue = mortageTerm.value;
+    })
+    let interestRateValue = '';
+    interestRate.addEventListener('input', () => {
+      interestRateValue = interestRate.value;
+    })
+
+   
+    const repayementType = document.getElementById('repayement-type');
+    const interestType = document.getElementById('interest-type');
+    const totalResults = document.getElementById('total');
+    const totalRepayMonthly = document.getElementById('total-monthly')
+    const resultSection = document.querySelector('.active');
+    const previewSection = document.querySelector('.preview');
+
+    // calculate the total and monthly charges
+    function calculateResults() {
+      if (repayementType.checked) {
+        interest = ((mortgageAmountValue) * ((interestRateValue/100) * mortageTermValue) + Math.floor(mortgageAmountValue));
+        totalResults.innerHTML = (Number(interest)).toFixed(2);
+        interestMonthly = (Number(interest / 12)).toFixed(2);
+        totalRepayMonthly.innerHTML = interestMonthly;
+        resultSection.style.display = 'grid';
+        previewSection.style.display = 'none';
+        
+      }else if (interestType.checked) {
+        interest = (mortgageAmountValue * (interestRateValue/100)) * mortageTermValue;
+        interestOnly = (Number(interest)).toFixed(2);
+        totalResults.innerHTML = interestOnly;
+        interestOnlyMonthly = (Number(interest/12)).toFixed(2);
+        totalRepayMonthly.innerHTML = interestOnlyMonthly;
+        resultSection.style.display = 'grid';
+        previewSection.style.display = 'none';
+      }
+    }
+
+    function updateResults() {
+      calculateResults();
+      amountValidationMessage();
+    }
+
+    function clear() {
+      input = ''
+    }
+
+    // for validation message
+    function amountValidationMessage () {
+      const sterlingIcon = document.getElementById('static-icon-1');
+      const yearsIcon = document.getElementById('static-icon-2');
+      const percentIcon = document.getElementById('static-icon-3')
+      const mortgageAmountValidation = document.getElementById('mortgage-amount-validation');
+      const morgageTermValidation = document.getElementById('morgage-term-validation');
+      const interestRateValidation = document.getElementById('interest-rate-validation');
+      
+      if (mortgageAmountValue.trim() === '') {
+        mortgageAmountValidation.style.display = 'block';
+        sterlingIcon.style.background = 'var(--red)';
+        sterlingIcon.style.color = 'var(--white)';
+        resultSection.style.display = 'none';
+        previewSection.style.display = 'grid';
+
+      }else{
+        mortgageAmountValidation.style.display = 'none';
+      };
+
+      if (mortageTermValue.trim() === '') {
+        morgageTermValidation.style.display = 'block';
+        yearsIcon.style.background = 'var(--red)'
+        yearsIcon.style.color = 'var(--white)'
+        resultSection.style.display = 'none';
+        previewSection.style.display = 'grid';
+
+      }else{
+        morgageTermValidation.style.display = 'none';
+      }
+
+      if (interestRateValue.trim() === '') {
+        interestRateValidation.style.display = 'block';
+        percentIcon.style.background = 'var(--red)'
+        percentIcon.style.color = 'var(--white)'
+        resultSection.style.display = 'none';
+        previewSection.style.display = 'grid';
+
+      }else{
+        interestRateValidation.style.display = 'none';
+      }
+
+      // validation message for radio inputs
+      const mortageTypeValidation = document.getElementById('mortage-type-validation')
+      let radios = document.getElementsByName('mortageType');
+
+      let checkedRadio = false;
+      for (let index = 0; index < radios.length; index++) {
+
+        if (radios[index].checked) {
+          checkedRadio = true;
+          break
+        }
+      }
+
+      if (checkedRadio) {
+        console.log('radio is checked');
+      }else if(!checkedRadio){
+        mortageTypeValidation.style.display = 'block';
+        resultSection.style.display = 'none';
+        previewSection.style.display = 'grid';
+      }
+      
+    }
+
+// THE END
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
 </body>
 </html>
